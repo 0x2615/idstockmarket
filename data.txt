@@ -1,0 +1,17 @@
+BM5k
+icon.png
+10
+3
+50
+
+Wrist Hankerchiefs
+icon.png
+7
+5
+40
+
+Spaghetti O's
+icon.png
+12
+3
+45
