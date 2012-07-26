@@ -1,0 +1,15 @@
+.company_pic
+{
+	float:left;
+}
+
+.company
+{
+	display:block;
+	height:200px;
+}
+
+.company h3
+{
+	color:#00FF00;
+}

@@ -1,12 +1,25 @@
 // JavaScript Document
-function go()
+var sm;
+
+function start()
 {
-	var sm = new StockMarket("data.txt");
-	console.info("Intial imported values:");
-	sm.printout();	
+	sm = new StockMarket("data.txt");
+	update();
+	setInterval(function() { update(); }, 1000);
+}
+
+function update()
+{
 	sm.update();
-	console.info("After one update:");
-	sm.printout();
+	$('#companies').empty();
+	for(i = 0; i < sm.numCompanies(); i++)
+	{
+		$('#companies').append('<div class="company">' +
+				'<img class="company_pic" src="' + sm.companies[i].iconSrc + '" />' +
+				'<h2>' + sm.companies[i].name + '</h2>' + 
+				'<h3>' + sm.companies[i].price + '</h2>' +
+			'</div>');
+	}
 }
 
 function StockMarket(filepath)
@@ -53,6 +66,8 @@ function StockMarket(filepath)
 			this.bustUpdate();
 		else
 			this.normalUpdate();
+			
+		this.updateColor();
 	}
 	
 	this.normalUpdate = function()
@@ -83,6 +98,11 @@ function StockMarket(filepath)
 			change = this.getIntBetween(-this.getLowerRange(c) * 2, 0);
 			c.update(change);	
 		}
+	}
+	
+	this.updateColor = function()
+	{
+		
 	}
 	
 	this.getUpperRange = function(company)
