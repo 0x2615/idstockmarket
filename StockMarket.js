@@ -2,10 +2,10 @@
 function go()
 {
 	var sm = new StockMarket("data.txt");
-	alert("Intial imported values:");
+	console.info("Intial imported values:");
 	sm.printout();	
 	sm.update();
-	alert("After one printout:");
+	console.info("After one update:");
 	sm.printout();
 }
 
@@ -40,7 +40,7 @@ function StockMarket(filepath)
 		}
 		else
 		{
-			alert("Error executing XMLHttpRequest call!");
+			console.error("Error executing XMLHttpRequest call!");
 		}
 	}
 	
@@ -121,7 +121,7 @@ function StockMarket(filepath)
 		for (i = 0; i < this.companies.length; i++)
 		{
 			var c = this.companies[i];
-			alert(c.printout());	
+			console.info(c.printout());	
 		}
 	}
 	
