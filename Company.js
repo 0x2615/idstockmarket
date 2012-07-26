@@ -26,9 +26,9 @@ function Company(name, iconSrc, price, lowPrice, highPrice)
 	
 	this.changeType = function()
 	{
-		if (this.priceHistory.length <= 1)
+		if (this.priceHistory.length <= 1 || this.price == this.priceHistory[this.priceHistory.length - 2])
 			return this.SAME;
-		else if (this.price < this.priceHistory[this.priceHistory.length - 1])
+		else if (this.price > this.priceHistory[this.priceHistory.length - 3])
 			return this.GAIN;
 		else 
 			return this.LOSS;	

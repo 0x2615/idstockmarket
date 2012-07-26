@@ -9,7 +9,17 @@
 	height:200px;
 }
 
-.company h3
+.neutralPrice
+{
+	color:#000000;
+}
+
+.lowerPrice
+{
+	color:#FF0000;
+}
+
+.higherPrice
 {
 	color:#00FF00;
 }
