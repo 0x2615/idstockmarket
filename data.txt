@@ -1,17 +1,17 @@
 BM5k
-icon.png
+img/icon.png
 10
 3
 50
 
 Wrist Hankerchiefs
-icon.png
+img/icon.png
 7
 5
 40
 
 Spaghetti O's
-icon.png
+img/icon.png
 12
 3
 45

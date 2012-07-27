@@ -1,0 +1,41 @@
+body
+{
+	background-image:url('../img/light-tile.gif');
+	background-repeat:repeat;
+}
+
+.company_pic
+{
+	float:left;
+}
+
+.company
+{
+	display:block;
+	height:200px;
+}
+
+.company h2
+{
+	font-family:Georgia, Serif;
+}
+
+.company h3
+{
+	font-family:Georgia, Serif;
+}
+
+.neutralPrice
+{
+	color:#000000;
+}
+
+.lowerPrice
+{
+	color:#BB0000;
+}
+
+.higherPrice
+{
+	color:#00AA00;
+}
