@@ -11,8 +11,10 @@ function Company(name, iconSrc, price, lowPrice, highPrice)
 	this.lowPrice = lowPrice;
 	this.highPrice = highPrice;
 	this.priceHistory = new Array();
+	this.changeHistory = new Array();
 	
 	this.priceHistory.push(this.price);
+	this.changeHistory.push(this.price);
 	
 	// ------ Define Functions ------- //
 	this.update = function(priceChange)
@@ -20,7 +22,8 @@ function Company(name, iconSrc, price, lowPrice, highPrice)
 		this.price += priceChange;
 		if (this.price < 0)
 			this.price = 0;
-		this.priceHistory.push(this.price);			
+		this.priceHistory.push(this.price);		
+		this.changeHistory.push(priceChange);
 	}
 	
 	/**

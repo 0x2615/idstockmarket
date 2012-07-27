@@ -85,7 +85,7 @@ function StockMarket(filepath)
 		for (i = 0; i < this.companies.length; i++)
 		{
 			var c = this.companies[i];
-			change = this.getIntBetween(-cgetLowerRange(this.RANGE) * 2, 0);
+			change = this.getIntBetween(-c.getLowerRange(this.RANGE) * 2, 0);
 			c.update(change);	
 		}
 	}

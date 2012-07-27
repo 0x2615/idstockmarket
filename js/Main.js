@@ -1,10 +1,14 @@
 // The StockMarket object the page displays
 var sm;
 
+// The graph that will display the data
+var graph;
+
 var UPDATE_INTERVAL = 2000;
 
 // Starts off the machine when the page loads
 $(document).ready(function() { start(); });
+
 
 /**
  * Starts the machine.
@@ -12,6 +16,7 @@ $(document).ready(function() { start(); });
 function start()
 {
 	sm = new StockMarket("data.txt");
+	graph = new Graph(sm);
 	initPage();
 	setInterval(function() { updatePage(); }, UPDATE_INTERVAL);
 }
@@ -23,6 +28,7 @@ function updatePage()
 {
 	sm.update();
 	updateVisuals();
+	graph.update();
 }
 
 /**
