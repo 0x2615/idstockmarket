@@ -13,16 +13,28 @@ body
 {
 	display:block;
 	height:200px;
+	width:800px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+h1
+{
+	font-family:Georgia, Serif;
+	font-size:3em;
+	margin-bottom:40px;
 }
 
 .company h2
 {
-	font-family:Georgia, Serif;
+	font-family:"Century Gothic", Sans-Serif;
+	font-size:2em;
 }
 
 .company h3
 {
-	font-family:Georgia, Serif;
+	font-family:"Century Gothic", Sans-Serif;
+	font-size:2em;
 }
 
 .neutralPrice
