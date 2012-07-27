@@ -2,7 +2,7 @@
 var sm;
 
 // The graph that will display the data
-var graph;
+var graphs;
 
 var UPDATE_INTERVAL = 2000;
 
@@ -16,7 +16,7 @@ $(document).ready(function() { start(); });
 function start()
 {
 	sm = new StockMarket("data.txt");
-	graph = new Graph(sm);
+	graphs = new Array();
 	initPage();
 	setInterval(function() { updatePage(); }, UPDATE_INTERVAL);
 }
@@ -28,7 +28,10 @@ function updatePage()
 {
 	sm.update();
 	updateVisuals();
-	graph.update();
+	for (i = 0; i < graphs.length; i++)
+	{
+		graphs[i].update();
+	}
 }
 
 /**
@@ -75,6 +78,13 @@ function initPage()
 				'<img class="company_pic" src="' + sm.companies[i].iconSrc + '" />' +
 				'<h2>' + sm.companies[i].name + '</h2>' + 
 				'<h3 class="neutralPrice">$' + sm.companies[i].price + '.00</h2>' +
+				'<div id="chart' + i + '" class="chart"></div>' + 
 			'</div>');
+			
+		// Creates the graph for each company
+		var graph = new Graph(sm.companies[i], 'chart' + i);
+		graphs.push(graph);
 	}
+	
+	
 }

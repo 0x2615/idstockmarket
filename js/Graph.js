@@ -1,9 +1,11 @@
-function Graph(stockMarket)
+function Graph(company, divName)
 {
 	// ------- Define Fields -------- //
-	this.sm = stockMarket;
+	this.company = company;
 	this.dataArray = new Array();
 	this.updateCount = 0;
+	this.numPoints = 30;
+	this.divName = divName;
 	
 	
 	// ------ Define Functions ------- //
@@ -11,17 +13,14 @@ function Graph(stockMarket)
 	{
 		// update stuff
 		this.updateDataArray();
-		drawChart(this.dataArray);
+		drawChart(this.dataArray, this.divName, this.company.name);
 	}
 	
 	this.initArray = function()
 	{
 		var titles = new Array();
 		titles.push('Time');
-		for (i = 0; i < sm.numCompanies(); i++)
-		{
-			titles.push(sm.companies[i].name);
-		}
+		titles.push(company.name);
 		this.dataArray.push(titles);
 	}
 	
@@ -30,10 +29,8 @@ function Graph(stockMarket)
 		var newEntry = new Array();
 		newEntry.push((this.updateCount++).toString());
 		
-		for (i = 0; i < sm.numCompanies(); i++)
-		{
-			newEntry.push(sm.companies[i].price);
-		}
+		newEntry.push(company.price);
+		
 		this.dataArray.push(newEntry);
 	}
 	
@@ -50,21 +47,15 @@ google.setOnLoadCallback(this.drawChart);
 // instantiates the pie chart, passes in the data and
 // draws it.
 	  
-function drawChart(array) 
-{
-	var a = new Array();
-	for (i = 0; i < array.length; i++)
-	{
-		a.push(array[i]);
-	}
-	
+function drawChart(array, divName, cName) 
+{	
 	// Create the data table.
-	var data = google.visualization.arrayToDataTable(a);
+	var data = google.visualization.arrayToDataTable(array);
 
 	var options = {
-	  title: 'Stock Trends'
+	  title: cName
 	};
 
-	var chart = new google.visualization.LineChart(document.getElementById('chart'));
+	var chart = new google.visualization.LineChart(document.getElementById(divName));
 	chart.draw(data, options);
 }
