@@ -1,11 +1,15 @@
 function StockMarket(filepath)
 {
 	// ------ Define Fields ------- //
-	this.companies = new Array();
-	this.DEFAULT_RANGE = 15;
-	this.filepath = filepath;
+	this.companies = new Array();  // A list of companies
+	this.RANGE = 15;  		 		 // How big the spread of values will be
+	this.filepath = filepath;		 // The filepath of where the data is stored
 	
 	// ------ Define Functions ------- //
+	
+	/**
+	* Parses the text file and stores it in Company objects
+	*/
 	this.parseFile = function()
 	{
 		var request = new XMLHttpRequest();
@@ -33,6 +37,9 @@ function StockMarket(filepath)
 		}
 	}
 	
+	/**
+	* Chooses between three events - normal, boom, and bust.
+	*/
 	this.update = function()
 	{
 		var eventChance = Math.random();
@@ -44,51 +51,44 @@ function StockMarket(filepath)
 			this.normalUpdate();
 	}
 	
+	/**
+	* Reasonable and equal amount of positive/negative fluctuation
+	*/
 	this.normalUpdate = function()
 	{
 		for (i = 0; i < this.companies.length; i++)
 		{
 			var c = this.companies[i];
-			change = this.getIntBetween(-this.getLowerRange(c), this.getUpperRange(c));
+			change = this.getIntBetween(-c.getLowerRange(this.RANGE), c.getUpperRange(this.RANGE));
 			c.update(change);
 		}
 	}
 	
+	/**
+	* Big positive increase
+	*/
 	this.boomUpdate = function()
 	{
 		for (i = 0; i < this.companies.length; i++)
 		{
 			var c = this.companies[i];
-			change = this.getIntBetween(0, this.getUpperRange(c) * 2);
+			change = this.getIntBetween(0, c.getUpperRange(this.RANGE) * 2);
 			c.update(change);	
 		}
 	}
 	
+	/**
+	* Big negative decrease
+	*/
 	this.bustUpdate = function()
 	{
 		for (i = 0; i < this.companies.length; i++)
 		{
 			var c = this.companies[i];
-			change = this.getIntBetween(-this.getLowerRange(c) * 2, 0);
+			change = this.getIntBetween(-cgetLowerRange(this.RANGE) * 2, 0);
 			c.update(change);	
 		}
 	}
-	
-	this.getUpperRange = function(company)
-	{
-		var diff = company.highPrice - company.lowPrice;
-		var percentFull = company.price / diff;
-		var reversePercent = 1 - percentFull;
-		return this.DEFAULT_RANGE * reversePercent;
-	}
-	
-	this.getLowerRange = function(company)
-	{
-		var diff = company.highPrice - company.lowPrice;
-		var percentFull = company.price / diff;
-		return this.DEFAULT_RANGE * percentFull;
-	}
-	
 	
 	this.numCompanies = function()
 	{

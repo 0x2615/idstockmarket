@@ -1,8 +1,7 @@
-// JavaScript Document
 function Company(name, iconSrc, price, lowPrice, highPrice)
 {
 	// ------ Define Fields ------- //
-	this.SAME = 0;
+	this.SAME = 0; // Constants for changeType()
 	this.GAIN = 1;
 	this.LOSS = 2;
 	
@@ -24,16 +23,45 @@ function Company(name, iconSrc, price, lowPrice, highPrice)
 		this.priceHistory.push(this.price);			
 	}
 	
+	/**
+	* Given the upper and lower bounds, it will determine the upper range
+	* of the next price range.
+	*/
+	this.getUpperRange = function(range)
+	{
+		var diff = this.highPrice - this.lowPrice;
+		var percentFull = this.price / diff;
+		var reversePercent = 1 - percentFull;
+		return range * reversePercent;
+	}
+	
+	/**
+	* Given the upper and lower bounds, it will determine the lower range
+	* of the next price range.
+	*/
+	this.getLowerRange = function(range)
+	{
+		var diff = this.highPrice - this.lowPrice;
+		var percentFull = this.price / diff;
+		return range * percentFull;
+	}
+	
+	/**
+	* Reports if the price increased, decreased, or stayed the same last update
+	*/
 	this.changeType = function()
 	{
 		if (this.priceHistory.length <= 1 || this.price == this.priceHistory[this.priceHistory.length - 2])
 			return this.SAME;
-		else if (this.price > this.priceHistory[this.priceHistory.length - 3])
+		else if (this.price > this.priceHistory[this.priceHistory.length - 2])
 			return this.GAIN;
 		else 
 			return this.LOSS;	
 	}
 	
+	/**
+	 * Gives a string representation of the object
+	 */
 	this.printout = function()
 	{
 		var s = "";
