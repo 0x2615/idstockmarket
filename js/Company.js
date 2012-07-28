@@ -1,4 +1,4 @@
-function Company(name, iconSrc, price, lowPrice, highPrice)
+function Company(name, iconSrc, lowPrice, highPrice)
 {
 	// ------ Define Fields ------- //
 	this.SAME = 0; // Constants for changeType()
@@ -7,10 +7,12 @@ function Company(name, iconSrc, price, lowPrice, highPrice)
 	
 	this.name = name;
 	this.iconSrc = iconSrc;
-	this.price = price;
 	this.lowPrice = lowPrice;
 	this.highPrice = highPrice;
+	this.price = Math.round((lowPrice + highPrice)/2);
 	this.priceHistory = new Array();
+	
+	console.info(this.lowPrice + ' ' + this.highPrice + ' ' + this.price)
 	
 	this.priceHistory.push(this.price);
 	

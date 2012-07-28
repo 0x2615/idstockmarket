@@ -26,10 +26,9 @@ function StockMarket(filepath)
 			{
 				var name = lines[i++];
 				var icon = lines[i++];
-				var price = parseInt(lines[i++]);
 				var lowPrice = parseInt(lines[i++]);
 				var highPrice = parseInt(lines[i++]);
-				c = new Company(name, icon, price, lowPrice, highPrice);
+				c = new Company(name, icon, lowPrice, highPrice);
 				this.companies.push(c);	
 			}
 		}

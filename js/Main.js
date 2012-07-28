@@ -44,6 +44,7 @@ function updateVisuals()
 	{
 		// Stores id of the price identifier
 		var compIdent = '#c' + i + ' h3';
+		var multIdent = '#c' + i + ' .multiples';
 		
 		// Stores the Company object reference
 		var comp = sm.companies[i];
@@ -56,11 +57,19 @@ function updateVisuals()
 		// appropriate new one.
 		$(compIdent).removeClass();
 		if (comp.changeType() == comp.SAME)
-			$('#c' + i + ' h3').addClass('neutral_price');
+			$(compIdent).addClass('neutral_price');
 		else if (comp.changeType() == comp.GAIN)
-			$('#c' + i + ' h3').addClass('higher_price');
+			$(compIdent).addClass('higher_price');
 		else if (comp.changeType() == comp.LOSS)
-			$('#c' + i + ' h3').addClass('lower_price');
+			$(compIdent).addClass('lower_price');
+			
+		// Update the multiples of each stock
+		$(multIdent).empty();
+		for (var j = 2; j <= 5; j++)
+		{
+			$(multIdent).append('<span class="mult_label">' + j + 'x: </span>' + 
+				'<span class="mult_price">$' + j * comp.price + '  </span>');
+		}
 	}
 }
 
@@ -84,6 +93,7 @@ function initPage()
 					'<img class="company_pic" src="' + sm.companies[i].iconSrc + '" />' +
 					'<h2>' + sm.companies[i].name + '</h2>' + 
 					'<h3 class="neutral_price">$' + sm.companies[i].price + '.00</h2>' +
+					'<div class="multiples">Hello</div>' +
 					'</div>' +
 					'<div id="chart' + i + '" class="chart"></div>' + 
 				'</div>');
@@ -95,6 +105,7 @@ function initPage()
 					'<img class="company_pic" src="' + sm.companies[i].iconSrc + '" />' +
 					'<h2>' + sm.companies[i].name + '</h2>' + 
 					'<h3 class="neutral_price">$' + sm.companies[i].price + '.00</h2>' +
+					'<div class="multiples">Hello</div>' +
 					'</div>' +
 					'<div id="chart' + i + '" class="chart"></div>' + 
 				'</div>');

@@ -1,26 +1,22 @@
 15
-3000
+2000
 
 BM5k
 img/image_template.png
-10
 3
 50
 
 Wrist Hankerchiefs
 img/image_template.png
-7
 5
 40
 
 Spaghetti O's
 img/image_template.png
-12
 3
 45
 
 Buttcheeks, Inc.
 img/image_template.png
-15
 2
 37
