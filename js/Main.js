@@ -76,14 +76,29 @@ function initPage()
 	{
 		// Creates a new div for each company and gives it its own id in the form of c<#>
 		// Puts a the company logo, a h2 for the company title, and a h3 for the price
-		$('#companies').append('<div class="company" id="c' + i + '">' +
-				'<div class="inner_company">' +
-				'<img class="company_pic" src="' + sm.companies[i].iconSrc + '" />' +
-				'<h2>' + sm.companies[i].name + '</h2>' + 
-				'<h3 class="neutral_price">$' + sm.companies[i].price + '.00</h2>' +
-				'</div>' +
-				'<div id="chart' + i + '" class="chart"></div>' + 
-			'</div>');
+		if (i > 0)
+		{
+			$('#companies').append('<div class="fade_line"></div>' + 
+					'<div class="company" id="c' + i + '">' +
+					'<div class="inner_company">' +
+					'<img class="company_pic" src="' + sm.companies[i].iconSrc + '" />' +
+					'<h2>' + sm.companies[i].name + '</h2>' + 
+					'<h3 class="neutral_price">$' + sm.companies[i].price + '.00</h2>' +
+					'</div>' +
+					'<div id="chart' + i + '" class="chart"></div>' + 
+				'</div>');
+		}
+		else
+		{
+			$('#companies').append('<div class="company" id="c' + i + '">' +
+					'<div class="inner_company">' +
+					'<img class="company_pic" src="' + sm.companies[i].iconSrc + '" />' +
+					'<h2>' + sm.companies[i].name + '</h2>' + 
+					'<h3 class="neutral_price">$' + sm.companies[i].price + '.00</h2>' +
+					'</div>' +
+					'<div id="chart' + i + '" class="chart"></div>' + 
+				'</div>');
+		}
 			
 		// Creates the graph for each company
 		var graph = new Graph(sm.companies[i], 'chart' + i);

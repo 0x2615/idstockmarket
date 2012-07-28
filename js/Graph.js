@@ -18,10 +18,10 @@ function Graph(company, divName)
 	
 	// Initialize the chart and options
 	// The chartOptions will be used during the draw upon update
-	this.chart = new google.visualization.LineChart(document.getElementById(divName));
+	this.chart = new google.visualization.AreaChart(document.getElementById(divName));
 	this.chartOptions = 
 		{
-		  title: this.company.name,
+		  colors:['#3AACCF'],
 		  legend: {position:'none'},
 		  vAxis: {title:'Price'},
 		  hAxis: {title:'Time'},

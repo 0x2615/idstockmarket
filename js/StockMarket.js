@@ -20,7 +20,9 @@ function StockMarket(filepath)
 		{
 			var results = request.responseText;
 			var lines = results.split("\n");
-			for(i = 0; i < lines.length; i++)
+			this.RANGE = parseInt(lines[0]);
+			UPDATE_INTERVAL = parseInt(lines[1]);
+			for(i = 3; i < lines.length; i++)
 			{
 				var name = lines[i++];
 				var icon = lines[i++];

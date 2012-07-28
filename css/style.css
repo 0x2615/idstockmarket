@@ -1,3 +1,26 @@
+body
+{
+	margin:0px;
+	padding:0px;
+}
+
+/* The page title */
+h1
+{
+	font-family:'Copse', 'Georgia', Serif;
+	font-size:3em;
+	color:#FEFEFE;
+	vertical-align:bottom;
+	margin-top:0px;
+	margin-bottom:0px;
+	padding-top:0.9em;
+	padding-bottom:0px;
+	display:block;
+	height:100px;
+	background-image:url('../img/banner.png');
+	background-repeat:repeat-x;
+}
+
 /* The container that holds all of the companies */
 #companies
 {
@@ -5,14 +28,27 @@
 	margin-right:auto;
 }
 
+/* The faded line to separate companies */
+.fade_line
+{
+	margin:0px;
+	padding:0px;
+	background-image:url('../img/fade_line.png');
+	background-repeat:repeat-x;
+	display:block;
+	height:10px;
+}
+
 /* Each individual company row */
 .company
 {
 	display:block;
-	height:200px;
+	height:150px;
 	width:900px;
 	margin-left:auto;
 	margin-right:auto;
+	margin-top:3px;
+	margin-bottom:5px;
 }
 
 /* Everything in the company divs except the chart */
@@ -20,6 +56,7 @@
 {
 	display:block;
 	width:500px;
+	height:150px;
 	float:left;
 }
 
@@ -27,6 +64,7 @@
 .company_pic
 {
 	float:left;
+	margin-right:15px;
 }
 
 /* All of the chart divs */
@@ -34,30 +72,25 @@
 {
 	display:block;
 	width:400px; 
-	height:200px;
+	height:150px;
 	float:right;
-}
-
-/* The page title */
-h1
-{
-	font-family:Georgia, Serif;
-	font-size:3em;
-	margin-bottom:40px;
 }
 
 /* The company name */
 .company h2
 {
 	font-family:"Century Gothic", Sans-Serif;
-	font-size:1.8em;
+	font-size:2em;
+	margin-top:0px;
 }
 
 /* The company price */
 .company h3
 {
 	font-family:"Century Gothic", Sans-Serif;
-	font-size:2.3em;
+	margin-bottom:0px;
+	margin-top:0.5em;
+	font-size:4em;
 }
 
 /* Styling of a price that hasn't gone up or down */
