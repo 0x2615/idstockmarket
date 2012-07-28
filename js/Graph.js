@@ -59,7 +59,7 @@ function Graph(company, divName)
 		if (this.highIndex < this.company.priceHistory.length)
 			this.increaseIndex();
 		
-		for(var i = this.lowIndex; i < this.highIndex; i++)
+		for(var i = this.lowIndex; i <= this.highIndex; i++)
 		{
 			var entry = new Array();
 			entry.push(i.toString()); // Puts in the time
