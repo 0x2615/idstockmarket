@@ -18,6 +18,7 @@ function start()
 	sm = new StockMarket("data.txt");
 	graphs = new Array();
 	initPage();
+	updatePage();
 	setInterval(function() { updatePage(); }, UPDATE_INTERVAL);
 }
 
@@ -28,7 +29,7 @@ function updatePage()
 {
 	sm.update();
 	updateVisuals();
-	for (i = 0; i < graphs.length; i++)
+	for (var i = 0; i < graphs.length; i++)
 	{
 		graphs[i].update();
 	}
@@ -39,7 +40,7 @@ function updatePage()
  */
 function updateVisuals()
 {
-	for (i = 0; i < sm.numCompanies(); i++)
+	for (var i = 0; i < sm.numCompanies(); i++)
 	{
 		// Stores id of the price identifier
 		var compIdent = '#c' + i + ' h3';
@@ -55,11 +56,11 @@ function updateVisuals()
 		// appropriate new one.
 		$(compIdent).removeClass();
 		if (comp.changeType() == comp.SAME)
-			$('#c' + i + ' h3').addClass('neutralPrice');
+			$('#c' + i + ' h3').addClass('neutral_price');
 		else if (comp.changeType() == comp.GAIN)
-			$('#c' + i + ' h3').addClass('higherPrice');
+			$('#c' + i + ' h3').addClass('higher_price');
 		else if (comp.changeType() == comp.LOSS)
-			$('#c' + i + ' h3').addClass('lowerPrice');
+			$('#c' + i + ' h3').addClass('lower_price');
 	}
 }
 
@@ -68,23 +69,31 @@ function updateVisuals()
  */
 function initPage()
 {
+	var numUpdates = 0;
 	// Clears out the div just in case
 	$('#companies').empty();
-	for(i = 0; i < sm.numCompanies(); i++)
+	for(var i = 0; i < sm.numCompanies(); i++)
 	{
 		// Creates a new div for each company and gives it its own id in the form of c<#>
 		// Puts a the company logo, a h2 for the company title, and a h3 for the price
 		$('#companies').append('<div class="company" id="c' + i + '">' +
+				'<div class="inner_company">' +
 				'<img class="company_pic" src="' + sm.companies[i].iconSrc + '" />' +
 				'<h2>' + sm.companies[i].name + '</h2>' + 
-				'<h3 class="neutralPrice">$' + sm.companies[i].price + '.00</h2>' +
+				'<h3 class="neutral_price">$' + sm.companies[i].price + '.00</h2>' +
+				'</div>' +
 				'<div id="chart' + i + '" class="chart"></div>' + 
 			'</div>');
 			
 		// Creates the graph for each company
 		var graph = new Graph(sm.companies[i], 'chart' + i);
 		graphs.push(graph);
+		
+		numUpdates = graph.numPoints;
 	}
 	
+	// Makes enough StockMarket updates so the graph is full at the start
+	for (var i = 0; i < numUpdates; i++)
+		sm.update();
 	
 }

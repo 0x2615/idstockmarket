@@ -56,7 +56,7 @@ function StockMarket(filepath)
 	*/
 	this.normalUpdate = function()
 	{
-		for (i = 0; i < this.companies.length; i++)
+		for (var i = 0; i < this.companies.length; i++)
 		{
 			var c = this.companies[i];
 			change = this.getIntBetween(-c.getLowerRange(this.RANGE), c.getUpperRange(this.RANGE));
@@ -69,7 +69,7 @@ function StockMarket(filepath)
 	*/
 	this.boomUpdate = function()
 	{
-		for (i = 0; i < this.companies.length; i++)
+		for (var i = 0; i < this.companies.length; i++)
 		{
 			var c = this.companies[i];
 			change = this.getIntBetween(0, c.getUpperRange(this.RANGE) * 2);
@@ -82,7 +82,7 @@ function StockMarket(filepath)
 	*/
 	this.bustUpdate = function()
 	{
-		for (i = 0; i < this.companies.length; i++)
+		for (var i = 0; i < this.companies.length; i++)
 		{
 			var c = this.companies[i];
 			change = this.getIntBetween(-c.getLowerRange(this.RANGE) * 2, 0);
@@ -107,7 +107,7 @@ function StockMarket(filepath)
 	
 	this.printout = function()
 	{
-		for (i = 0; i < this.companies.length; i++)
+		for (var i = 0; i < this.companies.length; i++)
 		{
 			var c = this.companies[i];
 			console.info(c.printout());	

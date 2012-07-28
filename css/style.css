@@ -1,35 +1,44 @@
-body
+/* The container that holds all of the companies */
+#companies
 {
-	background-image:url('../img/light-tile.gif');
-	background-repeat:repeat;
+	margin-left:auto;
+	margin-right:auto;
 }
 
+/* Each individual company row */
+.company
+{
+	display:block;
+	height:200px;
+	width:900px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+/* Everything in the company divs except the chart */
+.inner_company
+{
+	display:block;
+	width:500px;
+	float:left;
+}
+
+/* The company icon */
 .company_pic
 {
 	float:left;
 }
 
-.company
-{
-	display:block;
-	height:200px;
-	width:1000px;
-	margin-left:auto;
-	margin-right:auto;
-}
-
+/* All of the chart divs */
 .chart
 {
+	display:block;
 	width:400px; 
 	height:200px;
 	float:right;
 }
 
-#companies
-{
-	float:left;
-}
-
+/* The page title */
 h1
 {
 	font-family:Georgia, Serif;
@@ -37,29 +46,34 @@ h1
 	margin-bottom:40px;
 }
 
+/* The company name */
 .company h2
 {
 	font-family:"Century Gothic", Sans-Serif;
-	font-size:2em;
+	font-size:1.8em;
 }
 
+/* The company price */
 .company h3
 {
 	font-family:"Century Gothic", Sans-Serif;
-	font-size:2em;
+	font-size:2.3em;
 }
 
-.neutralPrice
+/* Styling of a price that hasn't gone up or down */
+.neutral_price
 {
 	color:#000000;
 }
 
-.lowerPrice
+/* Styling of a price that just dropped */
+.lower_price
 {
 	color:#BB0000;
 }
 
-.higherPrice
+/* Styling of a price that just rose */
+.higher_price
 {
 	color:#00AA00;
 }
