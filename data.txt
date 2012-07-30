@@ -1,22 +1,22 @@
 15
-2000
+45000
 
 BM5k
-img/image_template.png
+img/bm5k.png
 3
 50
 
-Wrist Hankerchiefs
-img/image_template.png
-5
+Motorola
+img/motorola.png
+10
 40
 
 Spaghetti O's
-img/image_template.png
-3
-45
+img/spaghetti.png
+20
+60
 
-Buttcheeks, Inc.
-img/image_template.png
-2
-37
+Pokemon
+img/pokemon.png
+5
+20
